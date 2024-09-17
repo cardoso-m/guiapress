@@ -1,15 +1,23 @@
 const express = require('express')
 const app = express()
 const bodyParser = require("body-parser")
-const Sequelize = require("sequelize")
+const connection = require("./database/database")
 
 //View engine
 app.set("view engine", "ejs")
 //Static
 app.use(express.static('public'))
 //Body Parser
-app.use(bodyParser.urlencoded({extends: false}))
+app.use(bodyParser.urlencoded({ extends: false }))
 app.use(bodyParser.json())
+
+//Database
+connection.authenticate().then(() => {
+    console.log("Conn success!")
+}).catch((msgError) => {
+    console.log(msgError)
+})
+
 
 
 app.get("/", (req, res) => {
