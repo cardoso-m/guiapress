@@ -20,6 +20,7 @@ connection.authenticate().then(() => {
     console.log(msgError)
 })
 
+
 app.use("/", articlesController)
 app.use("/", categoriesController)
 
