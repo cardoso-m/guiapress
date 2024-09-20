@@ -25,7 +25,11 @@
                             <th><%- categories.slug %></th>
                             <th>
                                 <button class="btn btn-warning">Editar</button>
-                                <button class="btn btn-danger">Deletar</button>
+
+                                <form method="POST" action="/admin/categories/delete" style="display: inline">
+                                    <input type="hidden" name="id" value="<%= categories.id %>">
+                                    <button class="btn btn-danger">Deletar</button>
+                                </form>
                             </th>
                         </tr>
                         <% }) %>
