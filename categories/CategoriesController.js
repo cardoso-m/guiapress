@@ -7,7 +7,7 @@ const { where } = require('sequelize')
 router.get("/admin/categories", (req, res) => {
 
     Category.findAll().then(categories => {
-        res.render("admin/categories/index", { categories: categories })
+        res.render("admin/categories/index", { category: categories })
     })
 
 })
