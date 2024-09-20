@@ -4,6 +4,8 @@
         <div class="container">
             <hr>
             <h2>Categorias:</h2>
+            <br>
+            <a href="/admin/categories/new" class="btn btn-success">Criar Categoria</a>
             <hr>
 
             <table class="table table-bordered">
@@ -16,9 +18,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th></th>
-                    </tr>
+                    <% categories.forEach(categories=> { %>
+                        <tr>
+                            <th><%- categories.id %></th>
+                            <th><%- categories.title %></th>
+                            <th><%- categories.slug %></th>
+                            <th>
+                                <button class="btn btn-warning">Editar</button>
+
+                                <form method="POST" action="/admin/categories/delete" style="display: inline">
+                                    <input type="hidden" name="id" value="<%= categories.id %>">
+                                    <button class="btn btn-danger">Deletar</button>
+                                </form>
+                            </th>
+                        </tr>
+                        <% }) %>
                 </tbody>
             </table>
 
