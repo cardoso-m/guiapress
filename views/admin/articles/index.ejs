@@ -13,7 +13,6 @@
                     <tr>
                         <th>ID</th>
                         <th>Título</th>
-                        <th>Artigo</th>
                         <th>Slug</th>
                         <th>Categoria</th>
                         <th>Ações</th>
@@ -29,15 +28,19 @@
                                 <%= article.title %>
                             </td>
                             <td>
-                                <%= article.body %>
-                            </td>
-                            <td>
                                 <%= article.slug %>
                             </td>
                             <td>
                                 <%= article.category.title %>
                             </td>
-                            <td></td>
+                            <td>
+
+                                <form method="POST" action="/admin/articles/delete" style="display: inline"
+                                    onsubmit="confirmDelete(event, this)">
+                                    <input type="hidden" name="id" value="<%= article.id %>">
+                                    <button class="btn btn-danger">Deletar</button>
+                                </form>
+                            </td>
                         </tr>
                         <% }) %>
                 </tbody>
@@ -50,7 +53,7 @@
             <script>
                 function confirmDelete(event, form) {
                     event.preventDefault()
-                    var decision = confirm("Deseja mesmo deletar essa categoria?")
+                    var decision = confirm("Deseja mesmo deletar este artigo?")
                     if (decision) {
                         form.submit()
                     } else {

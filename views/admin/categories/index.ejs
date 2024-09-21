@@ -20,10 +20,16 @@
                 <tbody>
                     <% category.forEach(category=> { %>
                         <tr>
-                            <th><%- category.id %></th>
-                            <th><%- category.title %></th>
-                            <th><%- category.slug %></th>
-                            <th>
+                            <td>
+                                <%= category.id %>
+                            </td>
+                            <td>
+                                <%= category.title %>
+                            </td>
+                            <td>
+                                <%= category.slug %>
+                            </td>
+                            <td>
                                 <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-warning">Editar</a>
 
                                 <form method="POST" action="/admin/categories/delete" style="display: inline"
@@ -31,7 +37,7 @@
                                     <input type="hidden" name="id" value="<%= category.id %>">
                                     <button class="btn btn-danger">Deletar</button>
                                 </form>
-                            </th>
+                            </td>
                         </tr>
                         <% }) %>
                 </tbody>
