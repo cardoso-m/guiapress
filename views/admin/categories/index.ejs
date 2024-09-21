@@ -24,7 +24,10 @@
                             <th><%- category.title %></th>
                             <th><%- category.slug %></th>
                             <th>
-                                <button class="btn btn-warning">Editar</button>
+                                <form method="GET" action="/admin/categories/edit/" style="display: inline">
+                                    <input type="hidden" name="id" value="<%= category.id %>">
+                                    <button class="btn btn-warning">Editar</button>
+                                </form>
 
                                 <form method="POST" action="/admin/categories/delete" style="display: inline"
                                     onsubmit="confirmDelete(event, this)">
