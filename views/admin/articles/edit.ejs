@@ -8,21 +8,32 @@
                     <h2>Editar artigo</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/articles/save">
-                        <input class="form-control" type="text" name="title" placeholder="Insira o nome do artigo"><br>
+                    <form method="POST" action="/articles/update">
+                        <input type="hidden" name="id" value="<%= article.id %>">
+                        <input class="form-control" type="text" name="title" placeholder="Insira o nome do artigo"
+                            value="<%= article.title %>"><br>
                         <textarea class="form-control" name="body" placeholder="Insira seu artigo"
                             id="article"></textarea><br>
                         <label for="">Categoria:</label>
                         <select name="category" class="form-control">
                             <% categories.forEach((category)=> { %>
-                                <option value="<%- category.id %>"> <%- category.title %> </option>
-                                <% }) %>
+
+                                <% if (category.id==article.categoryId) { %>
+                                    <option value="<%- category.id %>" selected> <%- category.title %> </option>
+                                    <% } else { %>
+                                        <option value="<%- category.id %>"> <%- category.title %> </option>
+                                        <% } %>
+                                            <% }) %>
                         </select>
                         <button class="btn btn-success">Atualizar</button>
                     </form>
                 </div>
 
             </div>
+        </div>
+
+        <div id="content" style="display: none">
+            <%- article.body %>
         </div>
 
         <%- include("../../partials/footer.ejs") %>
@@ -32,6 +43,9 @@
                 tinymce.init({
                     language: "pt_BR",
                     selector: "#article",
-                    plugins: ['advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons']
+                    plugins: ['advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'],
+                    init_instance_callback: () => {
+                        tinymce.activeEditor.setContent('<%- article.body %>')
+                    }
                 })
             </script>
