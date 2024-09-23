@@ -69,7 +69,6 @@ app.get("/categories/:slug", (req, res) => {
         },
         include: [{ model: Article }]
     }).then(category => {
-
         if (category != undefined) {
             Category.findAll().then(categories => {
                 res.render("index", { articles: category.articles, categories: categories })
@@ -77,7 +76,6 @@ app.get("/categories/:slug", (req, res) => {
         } else {
             res.redirect("/")
         }
-
     }).catch(error => {
         res.redirect("/")
     })
