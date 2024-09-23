@@ -4,7 +4,9 @@ const User = require('./user')
 const bcrypt = require('bcryptjs')
 
 router.get("/admin/users", (req, res) => {
-    res.render("/")
+    User.findAll().then(users => {
+        res.render("admin/users/index", { users: users })
+    })
 })
 
 router.get("/admin/user/create", (req, res) => {
