@@ -1,0 +1,23 @@
+<%- include("../../partials/header.ejs") %>
+
+    <%- include("../../partials/homenavbar.ejs") %>
+
+        <body>
+            <div class="container">
+                <hr>
+                <% result.article.rows.forEach(article=> { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <%= article.title %>
+                        </div>
+                        <div class="card-body">
+                            <a href="/<%= article.slug %>" class="btn btn-success"> Ler Artigo </a>
+                        </div>
+                    </div>
+                    <br>
+                    <% }) %>
+
+            </div>
+        </body>
+
+        <%- include("../../partials/footer.ejs") %>
