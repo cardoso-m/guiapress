@@ -34,6 +34,7 @@
                                 <%= article.category.title %>
                             </td>
                             <td>
+                                <a href="/admin/articles/edit/<%= article.id %>" class="btn btn-warning">Editar</a>
 
                                 <form method="POST" action="/admin/articles/delete" style="display: inline"
                                     onsubmit="confirmDelete(event, this)">
