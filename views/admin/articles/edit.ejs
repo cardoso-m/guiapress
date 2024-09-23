@@ -16,8 +16,13 @@
                         <label for="">Categoria:</label>
                         <select name="category" class="form-control">
                             <% categories.forEach((category)=> { %>
-                                <option value="<%- category.id %>"> <%- category.title %> </option>
-                                <% }) %>
+
+                                <% if (category.id==article.categoryId) { %>
+                                    <option value="<%- category.id %>" selected> <%- category.title %> </option>
+                                    <% } else { %>
+                                        <option value="<%- category.id %>"> <%- category.title %> </option>
+                                        <% } %>
+                                            <% }) %>
                         </select>
                         <button class="btn btn-success">Atualizar</button>
                     </form>
@@ -38,9 +43,6 @@
                     language: "pt_BR",
                     selector: "#article",
                     plugins: ['advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'],
-                    //init_instance_callback: () => {
-                    //tinymce.get("article").setContent($("#content").html())
-                    //}
                     init_instance_callback: () => {
                         tinymce.activeEditor.setContent('<%- article.body %>')
                     }
