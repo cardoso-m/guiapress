@@ -110,6 +110,7 @@ router.get("/articles/page/:num", (req, res) => {
         }
 
         result = {
+            page: parseInt(page),
             next: next,
             article: article
         }
