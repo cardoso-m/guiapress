@@ -4,9 +4,11 @@ const bodyParser = require("body-parser")
 const connection = require("./database/database")
 const categoriesController = require("./categories/CategoriesController")
 const articlesController = require("./articles/ArticlesController")
+const userController = require("./user/UserController")
 
 const Article = require('./articles/Article')
 const Category = require('./categories/Category')
+const User = require('./user/user')
 
 //View engine
 app.set("view engine", "ejs")
@@ -26,6 +28,7 @@ connection.authenticate().then(() => {
 
 app.use("/", articlesController)
 app.use("/", categoriesController)
+app.use("/", userController)
 
 app.get("/", (req, res) => {
 
