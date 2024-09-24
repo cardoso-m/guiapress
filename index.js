@@ -6,6 +6,7 @@ const connection = require("./database/database")
 const categoriesController = require("./categories/CategoriesController")
 const articlesController = require("./articles/ArticlesController")
 const userController = require("./user/UserController")
+const adminAuth = require("./middleware/adminAuth")
 
 const Article = require('./articles/Article')
 const Category = require('./categories/Category')
@@ -15,7 +16,7 @@ const User = require('./user/user')
 app.set("view engine", "ejs")
 //Session
 app.use(session({
-    secret: "82sj2s66aaamshx2,jd77a1", cookie: {maxAge: 30000}
+    secret: "82sj2s66aaamshx2,jd77a1", cookie: { maxAge: 30000 }
 }))
 //Static
 app.use(express.static('public'))
